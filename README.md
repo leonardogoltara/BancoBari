@@ -4,7 +4,7 @@
 - Projeto que contem a regra de negócio.
 
 ## HelloWorldBus
-- Projeto que contem a implementação da fila RabbitMQ.
+- Projeto que contém a implementação da fila RabbitMQ.
 
 ## HelloWorldAPI
 - Projeto que contem a implementação da regra de negócio adicionando a mensagem na fila.
