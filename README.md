@@ -1,4 +1,4 @@
-# BancoBari
+# BancoBari - Hello World
 
 ## HelloWorldDomain
 - Projeto que contém a regra de negócio.
