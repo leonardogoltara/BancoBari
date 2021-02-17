@@ -20,5 +20,4 @@
 - Visual Studio 2019
 - Postman
 - Docker
-- RabbitMQ Server 
--- Local on Docker
+- RabbitMQ Server (Local on Docker)
