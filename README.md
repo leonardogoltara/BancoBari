@@ -14,3 +14,11 @@
 
 ## HelloWorldQueue
 - Projeto que contém a implementação de processamento das mensagens na fila.
+
+
+## Environment
+- Visual Studio 2019
+- Postman
+- Docker
+- RabbitMQ Server 
+-- Local on Docker
