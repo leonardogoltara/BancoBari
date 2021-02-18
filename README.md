@@ -21,3 +21,5 @@
 - Postman
 - Docker
 - RabbitMQ Server (Local on Docker)
+
+https://github.com/lsgolt94/BancoBari/blob/master/2021-02-18%2014-19-48.mp4
