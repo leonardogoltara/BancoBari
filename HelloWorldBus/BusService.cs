@@ -7,17 +7,22 @@ using System.Text.Json;
 
 namespace HelloWorldBus
 {
-    public sealed class BusService
+    public sealed class BusService : IBusService
     {
+        public BusService() : this("", "")
+        {
+
+        }
         public BusService(string hostName, string keyQueue)
         {
-            HostName = hostName;
-            KeyQueue = keyQueue;
+            Initialize(hostName, keyQueue);
         }
-        public string HostName { get; }
-        public string KeyQueue { get; }
+        public string HostName { get; private set; }
+        public string KeyQueue { get; private set; }
         public void Send(Message message)
         {
+            Validate();
+
             var factory = new ConnectionFactory() { HostName = HostName };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
@@ -42,6 +47,8 @@ namespace HelloWorldBus
         }
         public void Receive()
         {
+            Validate();
+
             var factory = new ConnectionFactory() { HostName = HostName };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
@@ -64,6 +71,8 @@ namespace HelloWorldBus
 
                         Console.WriteLine($"## Received ## ServiceID: {message.ServiceID} | ID:{message.ID} | Message: {message.TextMessage} | Date: {message.Date}", strMessage);
 
+                        System.Threading.Thread.Sleep(1000);
+
                         channel.BasicAck(ea.DeliveryTag, false);
                     }
                     catch (Exception)
@@ -79,6 +88,16 @@ namespace HelloWorldBus
                 Console.WriteLine(" Press [enter] to exit.");
                 Console.ReadLine();
             }
+        }
+        public void Initialize(string hostName, string keyQueue)
+        {
+            HostName = hostName;
+            KeyQueue = keyQueue;
+        }
+        private void Validate()
+        {
+            if (string.IsNullOrEmpty(HostName) || string.IsNullOrEmpty(KeyQueue))
+                throw new Exception("Serviço não iniciado.");
         }
     }
 }

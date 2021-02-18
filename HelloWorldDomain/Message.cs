@@ -4,7 +4,7 @@ namespace HelloWorldDomain
 {
     public sealed class Message
     {
-        public Message() : this("", Guid.NewGuid())
+        public Message() : this("", Guid.Empty)
         { }
 
         public Message(string textMessage, Guid serviceID)
@@ -22,6 +22,9 @@ namespace HelloWorldDomain
 
         public void ChangeServiceID(Guid serviceID)
         {
+            if (serviceID == Guid.Empty)
+                throw new Exception("ServiceID inválido.");
+
             ServiceID = serviceID;
         }
     }
