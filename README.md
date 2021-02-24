@@ -21,3 +21,7 @@
 - Postman
 - Docker
 - RabbitMQ Server (Local on Docker)
+
+
+## Configuração
+https://www.youtube.com/watch?v=jAYAinOWudQ&ab_channel=ABrandaoLMicrosoftMVP
